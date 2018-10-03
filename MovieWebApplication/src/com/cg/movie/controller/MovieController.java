@@ -31,7 +31,7 @@ public class MovieController {
 		return movieService.getAllMovies();
 }
 	@RequestMapping(value ="/movie/search/{movieCategory}",headers="Accept=application/json",method = RequestMethod.GET)
-	public Movies searchEmployee(@PathVariable("movieCategory") String movieCategory) {
+	public List<Movies> searchEmployee(@PathVariable("movieCategory") String movieCategory) {
 		System.out.println("In search");
 		return movieService.searchMovie(movieCategory);
 }

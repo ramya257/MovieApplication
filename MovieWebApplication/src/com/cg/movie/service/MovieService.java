@@ -10,6 +10,6 @@ public interface MovieService {
 
 	void addMovie(Movies movie);
 
-	Movies searchMovie(String movieCategory);
+	List<Movies> searchMovie(String movieCategory);
 
 }

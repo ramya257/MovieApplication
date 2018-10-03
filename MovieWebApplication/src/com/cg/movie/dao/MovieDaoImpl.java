@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import javax.persistence.TypedQuery;
+
 import org.springframework.stereotype.Repository;
 
 import com.cg.movie.bean.Movies;
@@ -20,19 +22,26 @@ public class MovieDaoImpl implements MovieDao{
 	@Override
 	public List<Movies> getAllMovies() {
 		// TODO Auto-generated method stub
-		return null;
+		String query="select movie from Movies movie";
+		TypedQuery<Movies> movieList=entityManager.createQuery(query, Movies.class);
+		
+		return movieList.getResultList();
 	}
 
 	@Override
 	public void addMovie(Movies movie) {
 		// TODO Auto-generated method stub
+		entityManager.persist(movie);
 		
 	}
 
 	@Override
-	public Movies searchMovie(String movieCategory) {
+	public List<Movies> searchMovie(String movieCategory) {
 		// TODO Auto-generated method stub
-		return null;
+		String query="select movie from Movies movie where movieCategory=:pMovieId";
+		TypedQuery<Movies> searchQuery=entityManager.createQuery(query,Movies.class);
+		searchQuery.setParameter("pMovieId", movieCategory);
+		return searchQuery.getResultList();
 	}
 
 }

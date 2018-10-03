@@ -30,7 +30,7 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public Movies searchMovie(String movieCategory) {
+	public List<Movies> searchMovie(String movieCategory) {
 		// TODO Auto-generated method stub
 		return movieDao.searchMovie(movieCategory);
 	}

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>MovieWebApplication</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+   </servlet>
+
+	<!-- All URL patterns navigating via /rest/* -->
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Spring class HiddenHttpMethodFilter to support real HTTP methods as PUT and DELETE  -->
+	
+  
+  <!-- context param "contextConfigLocation" to Locate  dispatcher-servlet.xml-->
+    <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+	</context-param>   
+	
+	<!--  Loading Listener ContextLoaderListener -->
+	<listener>                   
+	<listener-class>    
+		org.springframework.web.context.ContextLoaderListener
+	</listener-class>    
+	</listener>
+	
+	<!--  CROS Features -->
+	<filter>
+    <filter-name>simpleCORSFilter</filter-name>
+    <filter-class>
+        com.cg.springwithangular.controller.SimpleCORSFilter
+    </filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>simpleCORSFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+</web-app>

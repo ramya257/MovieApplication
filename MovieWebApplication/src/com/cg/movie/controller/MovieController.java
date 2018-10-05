@@ -1,6 +1,7 @@
 package com.cg.movie.controller;
 
 import java.util.List;
+import java.util.Locale.Category;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -23,7 +24,7 @@ public class MovieController {
 	MovieService movieService;
 	
 	@RequestMapping(value ="/movie/create/",consumes = MediaType.APPLICATION_JSON_VALUE,headers="Accept=application/json",method = RequestMethod.POST)
-	public List<Movies> createEmployee(@RequestBody  Movies movie) {
+	public List<Movies> createMovie(@RequestBody  Movies movie) {
 		
 		System.out.println("hiiii");
 		System.out.println(movie);
@@ -31,10 +32,15 @@ public class MovieController {
 		return movieService.getAllMovies();
 }
 	@RequestMapping(value ="/movie/search/{movieCategory}",headers="Accept=application/json",method = RequestMethod.GET)
-	public List<Movies> searchEmployee(@PathVariable("movieCategory") String movieCategory) {
+	public List<Movies> searchMovie(@PathVariable("movieCategory") String movieCategory) {
 		System.out.println("In search");
 		return movieService.searchMovie(movieCategory);
 }
+	
+	@RequestMapping(value="/movie/fetchCategory",headers="Accept=application/json",method = RequestMethod.GET)
+	public List<Category> getCategoryList(){
+		return movieService.getCategoryList();
+	}
 	
 
 }

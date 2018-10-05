@@ -1,10 +1,10 @@
 package com.cg.movie.dao;
 
 import java.util.List;
+import java.util.Locale.Category;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
@@ -42,6 +42,14 @@ public class MovieDaoImpl implements MovieDao{
 		TypedQuery<Movies> searchQuery=entityManager.createQuery(query,Movies.class);
 		searchQuery.setParameter("pMovieId", movieCategory);
 		return searchQuery.getResultList();
+	}
+
+	@Override
+	public List<Category> getCategoryList() {
+		// TODO Auto-generated method stub
+		String query="select category from Category category";
+		TypedQuery<Category> categoryQuery=entityManager.createQuery(query,Category.class);
+		return categoryQuery.getResultList();
 	}
 
 }

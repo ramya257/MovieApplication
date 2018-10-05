@@ -1,6 +1,7 @@
 package com.cg.movie.service;
 
 import java.util.List;
+import java.util.Locale.Category;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,12 @@ public class MovieServiceImpl implements MovieService {
 	public List<Movies> searchMovie(String movieCategory) {
 		// TODO Auto-generated method stub
 		return movieDao.searchMovie(movieCategory);
+	}
+
+	@Override
+	public List<Category> getCategoryList() {
+		// TODO Auto-generated method stub
+		return movieDao.getCategoryList();
 	}
 
 }

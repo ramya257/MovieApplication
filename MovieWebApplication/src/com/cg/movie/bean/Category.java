@@ -12,11 +12,12 @@ public class Category {
 	@Id
 	private int categoryId;
 	private String categoryName;
-	public Category(int categoryId, String categoryName) {
-		super();
-		this.categoryId = categoryId;
-		this.categoryName = categoryName;
+	
+	
+	public Category(){
+		
 	}
+	
 	public int getCategoryId() {
 		return categoryId;
 	}

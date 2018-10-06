@@ -1,7 +1,8 @@
 package com.cg.movie.controller;
 
 import java.util.List;
-import java.util.Locale.Category;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.movie.bean.Category;
 import com.cg.movie.bean.Movies;
 import com.cg.movie.service.MovieService;
 
@@ -37,7 +39,7 @@ public class MovieController {
 		return movieService.searchMovie(movieCategory);
 }
 	
-	@RequestMapping(value="/movie/fetchCategory",headers="Accept=application/json",method = RequestMethod.GET)
+	@RequestMapping(value="/movie/fetchCategory",headers="Accept=application/json",method = RequestMethod.GET, produces = "application/json")
 	public List<Category> getCategoryList(){
 		return movieService.getCategoryList();
 	}

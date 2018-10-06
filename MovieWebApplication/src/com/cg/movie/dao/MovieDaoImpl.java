@@ -1,7 +1,8 @@
 package com.cg.movie.dao;
 
 import java.util.List;
-import java.util.Locale.Category;
+
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -9,6 +10,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
+import com.cg.movie.bean.Category;
 import com.cg.movie.bean.Movies;
 
 

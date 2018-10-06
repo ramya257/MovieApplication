@@ -40,9 +40,9 @@ public class MovieDaoImpl implements MovieDao{
 	@Override
 	public List<Movies> searchMovie(String movieCategory) {
 		// TODO Auto-generated method stub
-		String query="select movie from Movies movie where movieCategory=:pMovieId";
+		String query="select movie from Movies movie where moviesGenre=:pMovieCat";
 		TypedQuery<Movies> searchQuery=entityManager.createQuery(query,Movies.class);
-		searchQuery.setParameter("pMovieId", movieCategory);
+		searchQuery.setParameter("pMovieCat", movieCategory);
 		return searchQuery.getResultList();
 	}
 

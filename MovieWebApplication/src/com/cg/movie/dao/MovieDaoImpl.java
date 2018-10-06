@@ -4,16 +4,18 @@ import java.util.List;
 
 
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
 import com.cg.movie.bean.Category;
 import com.cg.movie.bean.Movies;
 
-
+@Transactional
 @Repository
 public class MovieDaoImpl implements MovieDao{
 	
@@ -52,6 +54,23 @@ public class MovieDaoImpl implements MovieDao{
 		String query="select category from Category category";
 		TypedQuery<Category> categoryQuery=entityManager.createQuery(query,Category.class);
 		return categoryQuery.getResultList();
+	}
+
+	@Override
+	public List<Movies> deleteMovie(int moviesId,String movieCategory) {
+		// TODO Auto-generated method stub
+		
+		String query="select movie from Movies movie where moviesGenre=:pMovieCat";
+		Movies movie=entityManager.find(Movies.class, moviesId);
+		if(movie!=null){
+			entityManager.remove(movie);
+			
+		}
+		TypedQuery<Movies> moviesList=entityManager.createQuery(query,Movies.class);
+		moviesList.setParameter("pMovieCat", movieCategory);
+		
+		
+		return moviesList.getResultList();
 	}
 
 }

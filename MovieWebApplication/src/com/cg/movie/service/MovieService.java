@@ -14,5 +14,7 @@ public interface MovieService {
 	List<Movies> searchMovie(String movieCategory);
 
 	List<Category> getCategoryList();
+	
+	List<Movies> deleteMovie(int moviesId,String movieCategory);
 
 }

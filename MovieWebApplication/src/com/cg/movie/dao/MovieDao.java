@@ -17,4 +17,6 @@ public interface MovieDao {
 
 	List<Category> getCategoryList();
 
+	List<Movies> deleteMovie(int moviesId,String movieCategory);
+
 }

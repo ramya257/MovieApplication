@@ -19,6 +19,10 @@ private Integer moviesId;
 private String moviesName;
 private Integer moviesRating;
 private String moviesGenre;
+
+public Movies(){
+	
+}
 public Integer getMoviesId() {
 	return moviesId;
 }

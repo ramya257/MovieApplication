@@ -8,8 +8,10 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.metamodel.source.binder.OneToManyPluralAttributeElementSource;
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -27,14 +29,19 @@ public class SimpleCORSFilter implements Filter {
 		// TODO Auto-generated method stub
 		HttpServletResponse response=(HttpServletResponse) resp;
 		 
-        //response.setHeader("Access-Control-Allow-Origin", "*");
-        //response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
-        //response.setHeader("Access-Control-Max-Age", "3600");
-        //response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+      /*  response.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+		*/
 		response.addHeader("Access-Control-Allow-Origin", "*");
+		response.addHeader("Access-Control-Allow-Credentials","true");
         response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
         response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
         response.addHeader("Access-Control-Max-Age", "1728000");
+		
+		
+		
     
         chain.doFilter(req, resp);
 		

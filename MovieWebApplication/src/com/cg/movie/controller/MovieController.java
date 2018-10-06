@@ -17,7 +17,6 @@ import com.cg.movie.bean.Movies;
 import com.cg.movie.service.MovieService;
 
 
-
 @RestController
 public class MovieController {
 	
@@ -28,7 +27,7 @@ public class MovieController {
 	@RequestMapping(value ="/movie/create/",consumes = MediaType.APPLICATION_JSON_VALUE,headers="Accept=application/json",method = RequestMethod.POST)
 	public List<Movies> createMovie(@RequestBody  Movies movie) {
 		
-		System.out.println("hiiii");
+		System.out.println("adding movie");
 		System.out.println(movie);
 		movieService.addMovie(movie);
 		return movieService.getAllMovies();
@@ -43,6 +42,16 @@ public class MovieController {
 	public List<Category> getCategoryList(){
 		return movieService.getCategoryList();
 	}
+	
+	@RequestMapping(value="/movie/deleteMovie/{movieId}/{movieCategory}",headers="Accept=application/json",method = RequestMethod.DELETE, produces = "application/json")
+	public List<Movies> deleteMovie(@PathVariable("movieId") int movieId,@PathVariable("movieCategory") String movieCategory){
+		return movieService.deleteMovie(movieId,movieCategory);
+		
+	}
+		
+	
+	
+	
 	
 
 }

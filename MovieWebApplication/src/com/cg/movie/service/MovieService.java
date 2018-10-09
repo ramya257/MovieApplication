@@ -17,4 +17,6 @@ public interface MovieService {
 	
 	List<Movies> deleteMovie(int moviesId,String movieCategory);
 
+	void updateMovie(Movies movie);
+
 }

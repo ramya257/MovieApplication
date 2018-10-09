@@ -24,7 +24,7 @@ public class MovieController {
 	@Autowired
 	MovieService movieService;
 	
-	@RequestMapping(value ="/movie/create/",consumes = MediaType.APPLICATION_JSON_VALUE,headers="Accept=application/json",method = RequestMethod.POST)
+	@RequestMapping(value ="/movie/createMovie/",consumes = MediaType.APPLICATION_JSON_VALUE,headers="Accept=application/json",method = RequestMethod.POST)
 	public List<Movies> createMovie(@RequestBody  Movies movie) {
 		
 		System.out.println("adding movie");
@@ -32,7 +32,7 @@ public class MovieController {
 		movieService.addMovie(movie);
 		return movieService.getAllMovies();
 }
-	@RequestMapping(value ="/movie/search/{movieCategory}",headers="Accept=application/json",method = RequestMethod.GET,produces = "application/json")
+	@RequestMapping(value ="/movie/searchMovie/{movieCategory}",headers="Accept=application/json",method = RequestMethod.GET,produces = "application/json")
 	public List<Movies> searchMovie(@PathVariable("movieCategory") String movieCategory) {
 		System.out.println("In search");
 		return movieService.searchMovie(movieCategory);
@@ -48,7 +48,18 @@ public class MovieController {
 		return movieService.deleteMovie(movieId,movieCategory);
 		
 	}
-		
+	
+	@RequestMapping(value="/movie/updateMovie",consumes = MediaType.APPLICATION_JSON_VALUE,headers="Accept=application/json",method = RequestMethod.PUT,produces="application/json")
+	public List<Movies> updateMovie(@RequestBody Movies movie){
+		System.out.println(movie);
+		movieService.updateMovie(movie);
+		return movieService.getAllMovies();
+	}
+	
+	@RequestMapping(value="/movie/getAllMovies/",produces="application/json",method=RequestMethod.GET,headers="Accept=application/json")
+	public List<Movies> getAllMovies(){
+		return movieService.getAllMovies();
+	}
 	
 	
 	

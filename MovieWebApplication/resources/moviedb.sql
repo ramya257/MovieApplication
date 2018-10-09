@@ -1,6 +1,6 @@
 create table moviedetails(moviesId number primary key,
 moviesName varchar2(50),
-moviesrating number(2,2),
+moviesrating number(2),
 moviesGenre varchar2(50));
 
 create table movie_category(categoryId number primary key, categoryName varchar2(50));

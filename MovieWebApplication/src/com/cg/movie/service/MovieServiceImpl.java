@@ -50,4 +50,10 @@ public class MovieServiceImpl implements MovieService {
 		return movieDao.deleteMovie(moviesId, movieCategory);
 	}
 
+	@Override
+	public void updateMovie(Movies movie) {
+		// TODO Auto-generated method stub
+		movieDao.updateMovie(movie);
+	}
+
 }

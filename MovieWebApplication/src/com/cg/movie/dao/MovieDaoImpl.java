@@ -73,4 +73,10 @@ public class MovieDaoImpl implements MovieDao{
 		return moviesList.getResultList();
 	}
 
+	@Override
+	public void updateMovie(Movies movie) {
+		entityManager.merge(movie);
+		// TODO Auto-generated method stub
+	}
+
 }
